@@ -1,0 +1,18 @@
+services:
+  postgres:
+    container_name: nestjs_rbac_postgres
+    image: postgres:latest
+    restart: always
+    ports:
+      - "5430:5432"
+    env_file:
+      - .docker.env
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - nestjs_rbac
+
+volumes:
+  postgres_data:
+networks:
+  nestjs_rbac:
